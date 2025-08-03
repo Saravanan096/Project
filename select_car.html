@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Image Hover Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('images/car4.jpg') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .car-container {
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .car-container:hover {
+            transform: scale(1.05);
+        }
+
+        .car-image {
+            width: 250px;
+            height: auto;
+            border-bottom: 3px solid #FFD700;
+            cursor: pointer;
+        }
+
+        .car-details {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 0;
+            font-weight: bold;
+        }
+
+        .car-container:hover .car-details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Your Car</h1>
+    <div class="car-grid">
+        <div class="car-container" ondblclick="window.location.href='Cars/innova.html'">
+            <img src="images/innova.jpg" alt="Car 1" class="car-image">
+            <div class="car-details">Rs. 40000</div>
+        </div>
+
+        <div class="car-container" ondblclick="window.location.href='Cars/carens.html'">
+            <img src="images/carens.jpg" alt="Car 2" class="car-image">
+            <div class="car-details">Rs. 35000</div>
+        </div>
+
+        <div class="car-container" ondblclick="window.location.href='Cars/bolero.html'">
+            <img src="images/bolero.jpg" alt="Car 3" class="car-image">
+            <div class="car-details">Rs. 40000</div>
+        </div>
+
+        <div class="car-container" ondblclick="window.location.href='Cars/shift.html'">
+            <img src="images/shift.jpg" alt="Car 4" class="car-image">
+            <div class="car-details">Rs. 30000</div>
+        </div>
+
+        <div class="car-container" ondblclick="window.location.href='Cars/tata.html'">
+            <img src="images/TATA-tiago.jpg" alt="Car 5" class="car-image">
+            <div class="car-details">Rs. 25000</div>
+        </div>
+
+        <div class="car-container" ondblclick="window.location.href='Cars/verna.html'">
+            <img src="images/verna.jpg" alt="Car 6" class="car-image">
+            <div class="car-details">Rs. 30000</div>
+        </div>
+    </div>
+</body>
+</html>

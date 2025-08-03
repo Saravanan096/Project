@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Image Hover Details</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('images/background1.jpg') no-repeat center center/cover;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+       
+
+        .bus-container {
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+            text-align: center;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .bus-container:hover {
+            transform: scale(1.05);
+        }
+
+        .bus-image {
+            width: 250px;
+            height: auto;
+            border-bottom: 3px solid #FFD700;
+        }
+
+        .bus-details {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 0;
+            font-weight: bold;
+        }
+
+        .bus-container:hover .bus-details {
+            display: block;
+        }
+
+        .bus-image {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select the Bus</h1>
+
+    <div class="bus-container" ondblclick="window.location.href='Bus/ACbus_details.html'">
+        <img src="images/busac.jpg" alt="Bus 1" class="bus-image">
+        <div class="bus-details">Rs. 80000</div>
+    </div>
+
+    <div class="bus-container" ondblclick="window.location.href='Bus/bus2.html'">
+        <img src="images/bus2.jpg" alt="Bus 2" class="bus-image">
+        <div class="bus-details">Rs. 50000</div>
+    </div>
+
+    <div class="bus-container" ondblclick="window.location.href='Bus/komban.html'">
+        <img src="images/komban.jpg" alt="Bus 3" class="bus-image">
+        <div class="bus-details">Rs. 60000</div>
+    </div>
+</body>
+</html>

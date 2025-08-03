@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thiru Change background Color</title>
+    <script>
+        var letter="0123456789ABCDEF";
+        function hi(){
+            myColor1="#00";
+            for(i=0;i<4;i++)
+                myColor1=myColor1+letter[Math.floor(Math.random() * 16)];
+            document.getElementById("did1").innerHTML="Color code is : "+myColor1;
+            document.getElementById("did1").style.background=myColor1;
+            
+            myColor2="#";
+            for(i=0;i<2;i++)
+                myColor2=myColor2+letter[Math.floor(Math.random() * 16)];
+            
+            myColor2=myColor2+"00";
+            for(i=0;i<2;i++)
+                myColor2=myColor2+letter[Math.floor(Math.random() * 16)];    
+            document.getElementById("did2").innerHTML="Color code is : "+myColor2;
+            document.getElementById("did2").style.background=myColor2;
+            
+            myColor3="#";
+            for(i=0;i<4;i++)
+                myColor3=myColor3+letter[Math.floor(Math.random() * 16)];
+            myColor3=myColor3+"00";
+            document.getElementById("did3").innerHTML="Color code is : "+myColor3;
+            document.getElementById("did3").style.background=myColor3;
+        }
+        
+    </script>
+</head>
+<body onload='setInterval(hi,1000);'>
+    <h2>Change background Color</h2>
+    <div style="height:200px" id='did1'>
+        
+    </div>
+    
+    <div style="height:200px" id='did2'>
+        
+    </div>
+    
+    <div style="height:200px" id='did3'>
+        
+    </div>
+    
+</body>
+</html> 

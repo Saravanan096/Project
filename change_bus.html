@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Image Hover Details</title>
+    <style>
+        .bus-container {
+            display: inline-block;
+            margin: 20px;
+            position: relative;
+            text-align: center;
+            cursor: pointer; /* Show pointer on hover */
+        }
+
+        .bus-image {
+            width: 200px; /* Adjust the size of the bus images */
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .bus-details {
+            display: none;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .bus-container:hover .bus-details {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="bus-container" id="busContainer" onclick="nextBus()">
+        <img src="images/busac.jpg" alt="Bus 1" class="bus-image" id="busImage">
+        <div class="bus-details" id="busDetails">Details about Bus 1</div>
+    </div>
+
+    <script>
+        const buses = [
+            {
+                image: 'images/busac.jpg',
+                details: 'Details about Bus 1'
+            },
+            {
+                image: 'images/bus2.jpg',
+                details: 'Details about Bus 2'
+            },
+            {
+                image: 'images/komban.jpg',
+                details: 'Details about Bus 3'
+            }
+        ];
+
+        let currentBusIndex = 0;
+
+        function nextBus() {
+            currentBusIndex = (currentBusIndex + 1) % buses.length; // Move to next bus, loop back to first after the last
+            updateBusDisplay();
+        }
+
+        function updateBusDisplay() {
+            const busImage = document.getElementById('busImage');
+            const busDetails = document.getElementById('busDetails');
+
+            busImage.src = buses[currentBusIndex].image; // Update image
+            busDetails.innerText = buses[currentBusIndex].details; // Update details
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Book a Trip</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url('images/gif1.gif'); /* Replace with your GIF URL */
+            background-size: cover; /* Ensures the image covers the full screen */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent background for better visibility */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        label {
+            font-size: 18px;
+            margin-top: 10px;
+            display: block;
+        }
+
+        select, input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #218838;
+        }
+
+        .date-fields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Book Your Trip</h1>
+        <form onsubmit="return validateForm()">
+            <label for="from">From:</label>
+            <select id="from" name="from">
+                <option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Salem">Salem</option>
+                <option value="Erode">Erode</option>
+                <option value="Tirunelveli">Tirunelveli</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Dindigul">Dindigul</option>
+            </select>
+
+            <label for="to">To:</label>
+            <select id="to" name="to">
+                <option value="Coimbatore">Coimbatore</option>
+                <option value="Madurai">Madurai</option>
+                <option value="Tiruchirappalli">Tiruchirappalli</option>
+                <option value="Salem">Salem</option>
+                <option value="Erode">Erode</option>
+                <option value="Tirunelveli">Tirunelveli</option>
+                <option value="Vellore">Vellore</option>
+                <option value="Thoothukudi">Thoothukudi</option>
+                <option value="Dindigul">Dindigul</option>
+                <option value="Chennai">Chennai</option>
+            </select>
+
+            <label for="trip_type">Trip Type:</label>
+            <select id="trip_type" name="trip_type" onchange="toggleDateFields()">
+                <option value="single">Single Day</option>
+                <option value="range">Date Range</option>
+            </select>
+
+            <div id="single_date" class="date-fields">
+                <label for="date">Select Date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <div id="range_dates" class="date-fields">
+                <label for="start_date">Start Date:</label>
+                <input type="date" id="start_date" name="start_date">
+                <label for="end_date">End Date:</label>
+                <input type="date" id="end_date" name="end_date">
+            </div>
+
+            <button type="submit" class="button">Book Now</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleDateFields() {
+            const tripType = document.getElementById("trip_type").value;
+            document.getElementById("single_date").style.display = tripType === "single" ? "block" : "none";
+            document.getElementById("range_dates").style.display = tripType === "range" ? "block" : "none";
+        }
+
+        function validateForm() {
+            const from = document.getElementById("from").value;
+            const to = document.getElementById("to").value;
+            const tripType = document.getElementById("trip_type").value;
+
+            if (from === to) {
+                alert("The 'From' and 'To' locations cannot be the same.");
+                return false;
+            }
+
+            if (tripType === "single") {
+                const date = document.getElementById("date").value;
+                if (!date) {
+                    alert("Please select a valid date.");
+                    return false;
+                }
+            } else if (tripType === "range") {
+                const startDate = document.getElementById("start_date").value;
+                const endDate = document.getElementById("end_date").value;
+
+                if (!startDate || !endDate) {
+                    alert("Please select both Start Date and End Date.");
+                    return false;
+                }
+
+                if (new Date(startDate) >= new Date(endDate)) {
+                    alert("End Date must be later than the Start Date.");
+                    return false;
+                }
+            }
+
+            // Redirect based on the selected vehicle
+            const selectedVehicle = localStorage.getItem('selectedVehicle');
+            if (selectedVehicle === 'Bus') {
+                window.location.href = "select_bus.html";
+            } else {
+                window.location.href = "select_car.html";
+            }
+
+            return false; // Prevent actual form submission
+        }
+
+        // Initialize the form to show single date by default
+        toggleDateFields();
+    </script>
+</body>
+</html>
